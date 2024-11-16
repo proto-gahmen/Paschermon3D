@@ -62,6 +62,11 @@ public class UI{
             y = gp.screenHeight / 2 + (gp.tileSize * 3);
             g2.drawString(text, x, y);
 
+            text = "ESC zum beenden";
+            x = getXforCenterText(text);
+            y = gp.screenHeight / 2 + (gp.tileSize * 4);
+            g2.drawString(text, x, y);
+
             g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80));
             g2.setColor(Color.yellow);
             text = "Danke fürs Spielen!";
@@ -94,33 +99,39 @@ public class UI{
             // DIALOGUE STATE
             if(gp.gameState == gp.dialogueState){
                 drawDialogueScreen();
+                drawGameScreen();
             }
 
             // PLAY STATE
             if (gp.gameState == gp.playState){
-                g2.setColor(Color.DARK_GRAY);
-                g2.fillRect(0, 0, gp.tileSize * gp.maxScreenCol, gp.tileSize * gp.maxScreenRow / 6);  //Obere leiste
-                g2.setColor(Color.white);
-                g2.setFont(g2.getFont().deriveFont(50f));
-                g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
-                g2.drawString(": "+ gp.player.hasKey, gp.tileSize + gp.tileSize/2, gp.tileSize + gp.tileSize/4);
-
-                //TIME
+                drawGameScreen();
                 playTIme += (double) 1/60;
-                g2.drawString("Time: "+dFormat.format(playTIme), gp.tileSize* 12, gp.tileSize + gp.tileSize/4);
+            }
+        }
+    }
 
-                //MESSAGE
-                if(messageOn){
-                    g2.setFont(g2.getFont().deriveFont(30f));
-                    g2.drawString(message, gp.tileSize/2, gp.tileSize * 11);
+    public void drawGameScreen(){
 
-                    messageCounter++;
+        g2.setColor(Color.DARK_GRAY);
+        g2.fillRect(0, 0, gp.tileSize * gp.maxScreenCol, gp.tileSize * gp.maxScreenRow / 6);  //Obere leiste
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(50f));
+        g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
+        g2.drawString(": "+ gp.player.hasKey, gp.tileSize + gp.tileSize/2, gp.tileSize + gp.tileSize/4);
 
-                    if (messageCounter > 121){
-                        messageCounter = 0;
-                        messageOn = false;
-                    }
-                }
+        //TIME
+        g2.drawString("Time: "+dFormat.format(playTIme), gp.tileSize* 16, gp.tileSize + gp.tileSize/4);
+
+        //MESSAGE
+        if(messageOn){
+            g2.setFont(g2.getFont().deriveFont(30f));
+            g2.drawString(message, gp.tileSize/2, gp.tileSize * 11);
+
+            messageCounter++;
+
+            if (messageCounter > 121){
+                messageCounter = 0;
+                messageOn = false;
             }
         }
     }
@@ -176,7 +187,7 @@ public class UI{
 
         Color c = new Color(0,0,0,210);
         g2.setColor(c);
-        g2.fillRect(0, 0, gp.tileSize * gp.maxScreenCol, gp.tileSize * gp.maxScreenRow);  //Obere leiste
+        g2.fillRect(0, 0, gp.tileSize * gp.maxScreenCol, gp.tileSize * gp.maxScreenRow);
         g2.setColor(Color.white);
         g2.drawString(text, x, y);
 

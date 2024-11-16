@@ -50,9 +50,9 @@ public class NPC_Johnkler extends Entity{
     public void setDialogue(){
 
         dialogues[0] = "Ich bin der Johnkler";
-        dialogues[1] = "Wenn du den Schatz dieser Insel ergattern \nwillst musst du zuerst an mir vorbei!";
+        dialogues[1] = "Wenn du den Schatz dieser Insel ergattern \nwillst musst du zuerst alle Schlüssel sammeln!";
         dialogues[2] = "Ha! was sag ich überhaupt";
-        dialogues[3] = "Du Schwächling kannst garnichts besiege \nerstmal meine Lakeien";
+        dialogues[3] = "Bisher hat die niemand gefunden also viel glück!";
 
     }
 
@@ -60,3 +60,4 @@ public class NPC_Johnkler extends Entity{
         super.speak();
     }
 }
+

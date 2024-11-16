@@ -44,6 +44,13 @@ public class KeyHandler implements KeyListener {
             if(code == KeyEvent.VK_SPACE){
                 spacePressed = true;
             }
+            if(code == KeyEvent.VK_ESCAPE){
+                if(gp.ui.gameFinished){
+                    Main.window.dispose();
+                    gp.leaderb.hinzufügen(gp.ui.playTIme);
+                }
+                System.exit(0);
+            }
 
 
             //DEBUG ENTER
